@@ -5,16 +5,37 @@
     <meta charset="UTF-8">
     <title>Test application</title>
     <link rel="stylesheet" href="./src/public/styles/styles.css">
+    <script type="module" src="./src/public/client-js/client-js.mjs"></script>
+    <script type="module" src="./src/public/client-js/module/bank-data/bank-data.mjs"></script>
+    <script type="module" src="./src/public/client-js/module/table-util/table-util.util.mjs"></script>
 </head>
 
 <body>
     <div class="header">
         <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-            <a class="pure-menu-heading" href="">Image to text</a>
+            <a class="page-title" href="">IMAGE TO TEXT</a>
         </div>
     </div>
     <div>
-        Hello Hello
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>Upload Billede</h2>
+                <form action="/test" method="post">
+                    <input type="submit" value="Send Req">
+                </form>
+            </div>
+            <div class="flex-item">
+                <h2>Læst Tekst</h2>
+            </div>
+            <div class="flex-item">
+                <h2>Matches</h2>
+            </div>
+            <div class="flex-item">
+                <h2>Bank Data</h2>
+                <div id="tableSlot" class="table-container"></div>
+            </div>
+        </div>
+
     </div>
 </body>
 
