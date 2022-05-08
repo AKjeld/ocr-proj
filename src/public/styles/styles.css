@@ -41,7 +41,6 @@ label {
 .home-menu {
     padding: 0.5em;
     z-index: 100;
-    border-bottom: 1px solid #16123f;
     font-size: large;
     text-decoration: none;
 }
