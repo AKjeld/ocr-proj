@@ -20,8 +20,14 @@
         <div class="flex-container">
             <div class="flex-item">
                 <h2>Upload Billede</h2>
-                <form action="/test" method="post">
-                    <input type="submit" value="Send Req">
+                <form class="upload-form" action="/test" method="post" enctype="multipart/form-data">
+                    <div class="form-field">
+                        <label for="file">Upload Image File:</label>
+                        <input type="file" name="file" accept="image/*" required id="">
+                    </div>
+                    <div class="form-field">
+                        <input type="submit" value="Read">
+                    </div>
                 </form>
             </div>
             <div class="flex-item">

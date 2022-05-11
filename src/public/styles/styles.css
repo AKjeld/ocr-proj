@@ -38,6 +38,17 @@ label {
     color: #16123f;
 }
 
+.upload-form {}
+
+.form-field {
+    display: block;
+    clear: both;
+}
+.form-field > label {
+    display: block;
+    clear: both;
+}
+
 .home-menu {
     padding: 0.5em;
     z-index: 100;
