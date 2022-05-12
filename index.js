@@ -5,44 +5,42 @@ import Express from "express";
 import Multer from "multer";
 import { promises as fs } from "fs";
 import { OCR } from "./src/ocr/ocr.js";
-
-
-
+import { BankData } from "./src/public/client-js/module/bank-data/bank-data.mjs";
 
 const app = Express();
 
+app.set("view engine", "ejs");
 
-var storage = Multer.diskStorage({
+// storage
+const storage = Multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "uploads");
+        cb(null, "uploads");
     },
     filename: function (req, file, cb) {
-      cb(
-        null,
-        file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-      );
+        cb(
+            null,
+            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+        );
     },
-  });
+});
 
 const upload = Multer({ storage: storage });
 
 app.use("/src/public", Express.static("src/public"));
 
 app.get("/", async (request, response) => {
-    const file = await fs.readFile('./index.html', "utf8");
-    if (!file) {
-        app.error("Sorry page not goodie mac tootie.");
-    };
-    response.send(file);
+    response.render("index", { data: "", numbers: "" });
 });
 
-app.post("/test", upload.single("file"), async (request, response) => {
-    console.log("Hello There");
+app.post("/read", upload.single("file"), async (request, response) => {
+    console.log("Request read of:");
     console.log(request.file.path);
 
     const text = await OCR.readImage(request.file.path);
-    response.render()
-    console.log(text);
+    const numbers = TextParser.getNumbers(text);
+    const totalGuess = TextParser.guessTotal(numbers);
+    const bankMatch = BankData.matchTotal(totalGuess);
+    response.render("index", { data: text, numbers: (bankMatch ?? []).join(", ") });
 });
 
 app.listen(process.env.PORT || 3000, () => console.log("App available on http://localhost:3000"));

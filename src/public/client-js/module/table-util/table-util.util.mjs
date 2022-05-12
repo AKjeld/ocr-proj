@@ -1,4 +1,11 @@
 export class TableUtil {
+
+    /**
+     * Makes a table from data array and header array.
+     * @param {*} array 
+     * @param {*} header 
+     * @returns 
+     */
     static makeTable(array, header) {
         const table = document.createElement("table");
         const thead = document.createElement("thead");

@@ -20,9 +20,9 @@
         <div class="flex-container">
             <div class="flex-item">
                 <h2>Upload Billede</h2>
-                <form class="upload-form" action="/test" method="post" enctype="multipart/form-data">
+                <form class="upload-form" action="/read" method="post" enctype="multipart/form-data">
                     <div class="form-field">
-                        <label for="file">Upload Image File:</label>
+                        <label for="file">Vælg fil:</label>
                         <input type="file" name="file" accept="image/*" required id="">
                     </div>
                     <div class="form-field">
@@ -32,9 +32,11 @@
             </div>
             <div class="flex-item">
                 <h2>Læst Tekst</h2>
+                <%= data %>
             </div>
             <div class="flex-item">
                 <h2>Matches</h2>
+                <%= numbers %>
             </div>
             <div class="flex-item">
                 <h2>Bank Data</h2>
